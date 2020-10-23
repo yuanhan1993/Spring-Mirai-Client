@@ -36,4 +36,10 @@ class BotController {
         return HttpDto.BotLoginAsyncResp.newBuilder().build()
     }
 
+    // 初始化数据
+    @RequestMapping("/init/v1", produces = ["application/x-protobuf"], consumes = ["application/x-protobuf"])
+    fun initBots() {
+        GlobalScope.launch { botService.initBots() }
+    }
+
 }
